@@ -79,17 +79,13 @@ class TicketMachineTest {
 	@Test
     // S9 : on ne peut pas insérer un montant négatif
 	void cannotInsertNegativeAmount() {
-		assertThrows(IllegalArgumentException.class, () -> {
-			machine.insertMoney(-10);
-		}, "L'insertion d'un montant négatif aurait dû lever une exception");
+		assertThrows(IllegalArgumentException.class, () -> machine.insertMoney(-10), "L'insertion d'un montant négatif aurait dû lever une exception");
 	}
 
 	@Test
     // S10 : on ne peut pas créer de machine qui délivre des tickets dont le prix est négatif
 	void cannotCreateMachineWithNegativeTicketPrice() {
-		assertThrows(IllegalArgumentException.class, () -> {
-			new TicketMachine(-PRICE);
-		}, "La création d'une machine avec un prix de ticket négatif aurait dû lever une exception");
+		assertThrows(IllegalArgumentException.class, () -> new TicketMachine(-PRICE), "La création d'une machine avec un prix de ticket négatif aurait dû lever une exception");
 	}
 
 }
